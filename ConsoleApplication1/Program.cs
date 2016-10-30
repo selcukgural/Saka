@@ -21,6 +21,7 @@ namespace ConsoleApplication1
             builder.Clear();
             
             
+		
              var query =
                 builder.Select()
                     .Top(100, false, e => e.BusinessEntityID, e => e.MiddleName, e => e.LastName)
@@ -29,7 +30,8 @@ namespace ConsoleApplication1
             //SELECT TOP 100 [BusinessEntityID],[MiddleName],[LastName] FROM Person ;
             Console.WriteLine(query);
             builder.Clear();
-            
+        
+		
             
             var query = builder.SelectAllProperties().From().Where(e=> e.PersonType).In("EM","IN").EndQuery();
             //SELECT [BusinessEntityID],[PersonType],[LastName],[Title],[MiddleName],[EmailPromotion],[ModifiedDate] FROM Person WHERE [PersonType] IN ('EM','IN') ;
@@ -59,6 +61,35 @@ namespace ConsoleApplication1
             Console.WriteLine(query);
             builder.Clear();
             
+	
+	
+	var query =
+                builder.Select(e => e.LastName, e => e.MiddleName, e => e.Title)
+                    .From()
+                    .LeftJoin<Product>()
+                    .On<Product>(e => e.BusinessEntityID, e => e.ProductID)
+                    .Where(e=> e.BusinessEntityID > 20)
+                    .EndQuery();
+            //SELECT [LastName],[MiddleName],[Title] FROM Person LEFT JOIN Product ON Person.BusinessEntityID = Product.ProductID WHERE [BusinessEntityID] > 20 ;
+            Console.WriteLine(query);
+            builder.Clear();
+		
+		
+	 var query =
+                builder.Insert()
+                    .Into(true)
+                    .Columns(e => e.LastName, e => e.MiddleName, e => e.Title)
+                    .Values("güral", "selçuk", "DEV")
+                    .EndQuery();
+            //INSERT INTO Person ([LastName],[MiddleName],[Title]) VALUES ('güral','selçuk','DEV') ;
+            Console.WriteLine(query);
+            builder.Clear();
+		
+		
+	  var query = builder.Delete().From().Where(e => e.BusinessEntityID == 2).EndQuery();
+            //DELETE FROM Person WHERE[BusinessEntityID] = 2;
+            Console.WriteLine(query);
+            builder.Clear();
             Console.ReadKey();
 
         }
