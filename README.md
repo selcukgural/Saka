@@ -1,4 +1,4 @@
-Genel anlamda POCO objeleriniz ile basit T-SQL queryleri oluşturabilirsiniz.
+###You can create with your POCO objects with simple T-SQL query.
 
 ```csharp
 using System;
