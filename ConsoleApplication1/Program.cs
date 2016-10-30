@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Saka.Entity.QueryBuilder;
 
 namespace ConsoleApplication1
