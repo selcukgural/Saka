@@ -1,0 +1,6 @@
+﻿Build in functionlar implemente edilecek
+
+iç içe query
+
+sadece class ın adını dönen methodlar base bir method haline getirilecek?
+Const.Sql... Dictinorye atılacak ve oradan key ile çağrılacak?

@@ -1,0 +1,193 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BD8E1BEF-BDCE-4502-B89F-DEE82420BC9B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Saka.Entity.QueryBuilder</RootNamespace>
+    <AssemblyName>Saka.Entity.QueryBuilder</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System.Data" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="src\exceptions\ArgumentEmptyException.cs" />
+    <Compile Include="src\extensions\IEnumerableExtensions.cs" />
+    <Compile Include="src\extensions\ObjectExtensions.cs" />
+    <Compile Include="src\extensions\StringExtensions.cs" />
+    <Compile Include="src\helpers\Constants.cs" />
+    <Compile Include="src\helpers\ExpressionBuilder.cs" />
+    <Compile Include="src\helpers\ExpressionHelper.cs" />
+    <Compile Include="src\helpers\FunctionHelper.cs" />
+    <Compile Include="src\interfaces\IAdd.cs" />
+    <Compile Include="src\interfaces\IAlter.cs" />
+    <Compile Include="src\interfaces\IAsc.cs" />
+    <Compile Include="src\interfaces\IBegin.cs" />
+    <Compile Include="src\interfaces\IBetween.cs" />
+    <Compile Include="src\interfaces\ICase.cs" />
+    <Compile Include="src\interfaces\IColumn.cs" />
+    <Compile Include="src\interfaces\IColumns.cs" />
+    <Compile Include="src\interfaces\IDatabase.cs" />
+    <Compile Include="src\interfaces\IDeclare.cs" />
+    <Compile Include="src\interfaces\IDelete.cs" />
+    <Compile Include="src\interfaces\IDesc.cs" />
+    <Compile Include="src\interfaces\IDrop.cs" />
+    <Compile Include="src\interfaces\IElse.cs" />
+    <Compile Include="src\interfaces\IEnd.cs" />
+    <Compile Include="src\interfaces\IGo.cs" />
+    <Compile Include="src\interfaces\IIf.cs" />
+    <Compile Include="src\interfaces\IIn.cs" />
+    <Compile Include="src\interfaces\IInserted.cs" />
+    <Compile Include="src\interfaces\IInto.cs" />
+    <Compile Include="src\interfaces\IJoin.cs" />
+    <Compile Include="src\interfaces\ILeftJoin.cs" />
+    <Compile Include="src\interfaces\ILike.cs" />
+    <Compile Include="src\interfaces\INot.cs" />
+    <Compile Include="src\interfaces\IOn.cs" />
+    <Compile Include="src\interfaces\IOutput.cs" />
+    <Compile Include="src\interfaces\IPrint.cs" />
+    <Compile Include="src\interfaces\IReturn.cs" />
+    <Compile Include="src\interfaces\IRollBack.cs" />
+    <Compile Include="src\interfaces\ISet.cs" />
+    <Compile Include="src\interfaces\ITable.cs" />
+    <Compile Include="src\interfaces\IThen.cs" />
+    <Compile Include="src\interfaces\ITransaction.cs" />
+    <Compile Include="src\interfaces\ITruncate.cs" />
+    <Compile Include="src\interfaces\IUnion.cs" />
+    <Compile Include="src\interfaces\IUpdate.cs" />
+    <Compile Include="src\interfaces\IUse.cs" />
+    <Compile Include="src\interfaces\IValues.cs" />
+    <Compile Include="src\interfaces\IWhen.cs" />
+    <Compile Include="src\views\Add.cs" />
+    <Compile Include="src\views\Alter.cs" />
+    <Compile Include="src\views\Asc.cs" />
+    <Compile Include="src\views\Begin.cs" />
+    <Compile Include="src\views\Between.cs" />
+    <Compile Include="src\views\Case.cs" />
+    <Compile Include="src\views\Column.cs" />
+    <Compile Include="src\views\Columns.cs" />
+    <Compile Include="src\views\Database.cs" />
+    <Compile Include="src\views\Declare.cs" />
+    <Compile Include="src\views\Delete.cs" />
+    <Compile Include="src\views\Desc.cs" />
+    <Compile Include="src\views\Drop.cs" />
+    <Compile Include="src\views\Else.cs" />
+    <Compile Include="src\views\End.cs" />
+    <Compile Include="src\views\From.cs" />
+    <Compile Include="src\interfaces\IInsert.cs" />
+    <Compile Include="src\interfaces\IOr.cs" />
+    <Compile Include="src\interfaces\IAs.cs" />
+    <Compile Include="src\interfaces\IAvg.cs" />
+    <Compile Include="src\interfaces\ICount.cs" />
+    <Compile Include="src\interfaces\IDistinct.cs" />
+    <Compile Include="src\interfaces\IFormat.cs" />
+    <Compile Include="src\interfaces\IFrom.cs" />
+    <Compile Include="src\interfaces\IGroupBy.cs" />
+    <Compile Include="src\interfaces\IHaving.cs" />
+    <Compile Include="src\interfaces\ILen.cs" />
+    <Compile Include="src\interfaces\IMin.cs" />
+    <Compile Include="src\interfaces\IAnd.cs" />
+    <Compile Include="src\interfaces\INow.cs" />
+    <Compile Include="src\interfaces\IOrderBy.cs" />
+    <Compile Include="src\interfaces\ISubstring.cs" />
+    <Compile Include="src\interfaces\ISum.cs" />
+    <Compile Include="src\interfaces\ILower.cs" />
+    <Compile Include="src\interfaces\ITop.cs" />
+    <Compile Include="src\interfaces\IUpper.cs" />
+    <Compile Include="src\views\Go.cs" />
+    <Compile Include="src\views\If.cs" />
+    <Compile Include="src\views\In.cs" />
+    <Compile Include="src\views\Insert.cs" />
+    <Compile Include="src\views\Inserted.cs" />
+    <Compile Include="src\views\Into.cs" />
+    <Compile Include="src\views\Join.cs" />
+    <Compile Include="src\views\LeftJoin.cs" />
+    <Compile Include="src\views\Like.cs" />
+    <Compile Include="src\views\Not.cs" />
+    <Compile Include="src\views\On.cs" />
+    <Compile Include="src\views\Or.cs" />
+    <Compile Include="src\views\And.cs" />
+    <Compile Include="src\views\As.cs" />
+    <Compile Include="src\views\Avg.cs" />
+    <Compile Include="src\views\Count.cs" />
+    <Compile Include="src\views\Distinct.cs" />
+    <Compile Include="src\views\Format.cs" />
+    <Compile Include="src\views\GroupBy.cs" />
+    <Compile Include="src\views\Having.cs" />
+    <Compile Include="src\views\Len.cs" />
+    <Compile Include="src\views\Lower.cs" />
+    <Compile Include="src\views\Max.cs" />
+    <Compile Include="src\views\Min.cs" />
+    <Compile Include="src\views\Now.cs" />
+    <Compile Include="src\views\OrderBy.cs" />
+    <Compile Include="src\views\Output.cs" />
+    <Compile Include="src\views\Print.cs" />
+    <Compile Include="src\views\Return.cs" />
+    <Compile Include="src\views\RollBack.cs" />
+    <Compile Include="src\views\Select.cs" />
+    <Compile Include="src\views\Set.cs" />
+    <Compile Include="src\views\SubString.cs" />
+    <Compile Include="src\views\Sum.cs" />
+    <Compile Include="src\views\Table.cs" />
+    <Compile Include="src\views\Then.cs" />
+    <Compile Include="src\views\Top.cs" />
+    <Compile Include="src\views\Transaction.cs" />
+    <Compile Include="src\views\Truncate.cs" />
+    <Compile Include="src\views\Union.cs" />
+    <Compile Include="src\views\Update.cs" />
+    <Compile Include="src\views\Upper.cs" />
+    <Compile Include="src\views\Use.cs" />
+    <Compile Include="src\views\Values.cs" />
+    <Compile Include="src\views\When.cs" />
+    <Compile Include="src\views\Where.cs" />
+    <Compile Include="src\interfaces\ISelect.cs" />
+    <Compile Include="src\interfaces\IQueryBuilder.cs" />
+    <Compile Include="src\interfaces\IWhere.cs" />
+    <Compile Include="src\interfaces\IMax.cs" />
+    <Compile Include="src\QueryBuilder.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="TextFile1.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
