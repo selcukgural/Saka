@@ -1,3 +1,5 @@
+Genel anlamda POCO objeleriniz ile basit T-SQL queryleri oluşturabilirsiniz.
+
 ```csharp
 using System;
 using Saka.Entity.QueryBuilder;
