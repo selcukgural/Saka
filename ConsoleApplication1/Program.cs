@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Saka.Entity.QueryBuilder;
 
 namespace ConsoleApplication1
@@ -8,39 +8,38 @@ namespace ConsoleApplication1
         static void Main(string[] args)
         {
             var builder = new QueryBuilder<Person>();
-            
-            
+
             var query = builder.Select(e => e.BusinessEntityID, e => e.MiddleName, e => e.LastName, e => e.Title)
                 .From("Person.Person")
                 .Where(e => e.Title)
                 .Is()
                 .Not()
-                .Null();
+                .Null().EndQuery();
             //SELECT [BusinessEntityID],[MiddleName],[LastName],[Title] FROM Person.Person WHERE [Title] IS NOT NULL ;
             Console.WriteLine(query);
             builder.Clear();
-            
-            
-		
-             var query =
-                builder.Select()
-                    .Top(100, false, e => e.BusinessEntityID, e => e.MiddleName, e => e.LastName)
-                    .From()
-                    .EndQuery();
+
+
+
+            query =
+               builder.Select()
+                   .Top(100, false, e => e.BusinessEntityID, e => e.MiddleName, e => e.LastName)
+                   .From()
+                   .EndQuery();
             //SELECT TOP 100 [BusinessEntityID],[MiddleName],[LastName] FROM Person ;
             Console.WriteLine(query);
             builder.Clear();
-        
-		
-            
-            var query = builder.SelectAllProperties().From().Where(e=> e.PersonType).In("EM","IN").EndQuery();
+
+
+
+            query = builder.SelectAllProperties().From().Where(e => e.PersonType).In("EM", "IN").EndQuery();
             //SELECT [BusinessEntityID],[PersonType],[LastName],[Title],[MiddleName],[EmailPromotion],[ModifiedDate] FROM Person WHERE [PersonType] IN ('EM','IN') ;
             Console.WriteLine(query);
             builder.Clear();
-            
-            
-            
-            var query =
+
+
+
+            query =
                 builder.Select().Avg(e => e.Total)
                     .From(true).FreeText("( ").Select(e => e.MiddleName, e => e.LastName).Sum(e => e.Amount).As("TOTAL")
                     .From("PENALTIES")
@@ -49,7 +48,7 @@ namespace ConsoleApplication1
                     .FreeText("( ")
                     .Select(e => e.LastName)
                     .From("Players")
-                    .Where(e => e.LastName == "Jack").Or(e=> e.LastName == "Mike")
+                    .Where(e => e.LastName == "Jack").Or(e => e.LastName == "Mike")
                     .FreeText(")")
                     .EndQuery();
             /*
@@ -60,33 +59,33 @@ namespace ConsoleApplication1
              */
             Console.WriteLine(query);
             builder.Clear();
-            
-	
-	
-	var query =
-                builder.Select(e => e.LastName, e => e.MiddleName, e => e.Title)
-                    .From()
-                    .LeftJoin<Product>()
-                    .On<Product>(e => e.BusinessEntityID, e => e.ProductID)
-                    .Where(e=> e.BusinessEntityID > 20)
-                    .EndQuery();
+
+
+
+            query =
+                        builder.Select(e => e.LastName, e => e.MiddleName, e => e.Title)
+                            .From()
+                            .LeftJoin<Product>()
+                            .On<Product>(e => e.BusinessEntityID, e => e.ProductID)
+                            .Where(e => e.BusinessEntityID > 20)
+                            .EndQuery();
             //SELECT [LastName],[MiddleName],[Title] FROM Person LEFT JOIN Product ON Person.BusinessEntityID = Product.ProductID WHERE [BusinessEntityID] > 20 ;
             Console.WriteLine(query);
             builder.Clear();
-		
-		
-	 var query =
-                builder.Insert()
-                    .Into(true)
-                    .Columns(e => e.LastName, e => e.MiddleName, e => e.Title)
-                    .Values("güral", "selçuk", "DEV")
-                    .EndQuery();
+
+
+            query =
+                       builder.Insert()
+                           .Into(true)
+                           .Columns(e => e.LastName, e => e.MiddleName, e => e.Title)
+                           .Values("güral", "selçuk", "DEV")
+                           .EndQuery();
             //INSERT INTO Person ([LastName],[MiddleName],[Title]) VALUES ('güral','selçuk','DEV') ;
             Console.WriteLine(query);
             builder.Clear();
-		
-		
-	  var query = builder.Delete().From().Where(e => e.BusinessEntityID == 2).EndQuery();
+
+
+            query = builder.Delete().From().Where(e => e.BusinessEntityID == 2).EndQuery();
             //DELETE FROM Person WHERE[BusinessEntityID] = 2;
             Console.WriteLine(query);
             builder.Clear();
