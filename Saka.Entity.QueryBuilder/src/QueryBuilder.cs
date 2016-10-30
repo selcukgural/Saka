@@ -209,6 +209,11 @@
             Query = string.Empty;
         }
 
+        public QueryBuilder<T> FreeText(string value)
+        {
+            Query += value;
+            return this;
+        }
         public override string ToString()
         {
             return Query;
