@@ -103,10 +103,13 @@ namespace ConsoleApplication1
         public string MiddleName { get; set; }
         public string EmailPromotion { get; set; }
         public DateTime ModifiedDate { get; set; }
+        public decimal Total { get; set; } //dummy
+        public decimal Amount { get; set; }
     }
     public class Product
     {
         public int ProductID { get; set; }
+        public decimal ListPrice { get; set; }
         public string Name { get; set; }
         public string ProductNumber { get; set; }
         public int MakeFlag { get; set; }
