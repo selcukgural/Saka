@@ -8,12 +8,57 @@ namespace ConsoleApplication1
         static void Main(string[] args)
         {
             var builder = new QueryBuilder<Person>();
+            
+            
             var query = builder.Select(e => e.BusinessEntityID, e => e.MiddleName, e => e.LastName, e => e.Title)
                 .From("Person.Person")
                 .Where(e => e.Title)
                 .Is()
                 .Not()
                 .Null();
+            //SELECT [BusinessEntityID],[MiddleName],[LastName],[Title] FROM Person.Person WHERE [Title] IS NOT NULL ;
+            Console.WriteLine(query);
+            builder.Clear();
+            
+            
+             var query =
+                builder.Select()
+                    .Top(100, false, e => e.BusinessEntityID, e => e.MiddleName, e => e.LastName)
+                    .From()
+                    .EndQuery();
+            //SELECT TOP 100 [BusinessEntityID],[MiddleName],[LastName] FROM Person ;
+            Console.WriteLine(query);
+            builder.Clear();
+            
+            
+            var query = builder.SelectAllProperties().From().Where(e=> e.PersonType).In("EM","IN").EndQuery();
+            //SELECT [BusinessEntityID],[PersonType],[LastName],[Title],[MiddleName],[EmailPromotion],[ModifiedDate] FROM Person WHERE [PersonType] IN ('EM','IN') ;
+            Console.WriteLine(query);
+            builder.Clear();
+            
+            
+            
+            var query =
+                builder.Select().Avg(e => e.Total)
+                    .From(true).FreeText("( ").Select(e => e.MiddleName, e => e.LastName).Sum(e => e.Amount).As("TOTAL")
+                    .From("PENALTIES")
+                    .GroupBy(e => e.LastName).As("TOTALS")
+                .Where(e => e.LastName).In()
+                    .FreeText("( ")
+                    .Select(e => e.LastName)
+                    .From("Players")
+                    .Where(e => e.LastName == "Jack").Or(e=> e.LastName == "Mike")
+                    .FreeText(")")
+                    .EndQuery();
+            /*
+             SELECT AVG ([Total]) 
+	            FROM ( SELECT [MiddleName],[LastName] SUM ([Amount]) AS [TOTAL] 
+	            FROM PENALTIES GROUP BY [LastName] AS [TOTALS] 
+            WHERE [LastName] IN ( SELECT [LastName] FROM Players WHERE [LastName] = 'Jack'  OR [LastName] = 'Mike' );
+             */
+            Console.WriteLine(query);
+            builder.Clear();
+            
             Console.ReadKey();
 
         }
