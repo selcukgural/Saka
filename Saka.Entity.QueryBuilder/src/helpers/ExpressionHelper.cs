@@ -19,7 +19,7 @@
 
         public static string GetExpressionPropertyName<T>(Expression<Func<T, object>> column)
         {
-            if (column == null) throw new ArgumentNullException("columns");
+            if (column == null) throw new ArgumentNullException(nameof(column));
 
             return (column.Body as MemberExpression)?.Member.Name ?? (((UnaryExpression) column.Body).Operand as MemberExpression).Member.Name;
         }

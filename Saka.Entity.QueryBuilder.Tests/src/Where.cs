@@ -12,35 +12,35 @@ namespace Saka.Entity.QueryBuilder.Tests
         {
             builder.Clear();
             builder.Where(e => e.BusinessEntityID.Equals(0)).EndQuery();
-            Assert.AreEqual("WHERE [BusinessEntityID] = 0 ;", builder.Query);
+            Assert.AreEqual("WHERE [BusinessEntityID] = 0  ;", builder.Query);
         }
         [TestMethod]
         public void Where_With_Equal_Operand()
         {
             builder.Clear();
             builder.Where(e => e.BusinessEntityID == 0).EndQuery();
-            Assert.AreEqual("WHERE [BusinessEntityID] = 0 ;", builder.Query);
+            Assert.AreEqual("WHERE [BusinessEntityID] = 0  ;", builder.Query);
         }
         [TestMethod]
         public void Where_With_LessThan_Equal()
         {
             builder.Clear();
             builder.Where(e => e.BusinessEntityID <= 0).EndQuery();
-            Assert.AreEqual("WHERE [BusinessEntityID] <= 0 ;", builder.Query);
+            Assert.AreEqual("WHERE [BusinessEntityID] <= 0  ;", builder.Query);
         }
         [TestMethod]
         public void Where_With_GreatherThan_Equal()
         {
             builder.Clear();
             builder.Where(e => e.BusinessEntityID >= 0).EndQuery();
-            Assert.AreEqual("WHERE [BusinessEntityID] >= 0 ;", builder.Query);
+            Assert.AreEqual("WHERE [BusinessEntityID] >= 0  ;", builder.Query);
         }
         [TestMethod]
         public void Where_With_NotEqual()
         {
             builder.Clear();
             builder.Where(e => e.BusinessEntityID != 0).EndQuery();
-            Assert.AreEqual("WHERE [BusinessEntityID] <> 0 ;", builder.Query);
+            Assert.AreEqual("WHERE [BusinessEntityID] <> 0  ;", builder.Query);
         }
         [TestMethod]
         public void Where_()
@@ -68,7 +68,7 @@ namespace Saka.Entity.QueryBuilder.Tests
         {
             builder.Clear();
             builder.Where(e=> e.LastName == "Selçuk",true).EndQuery();
-            Assert.AreEqual("WHERE ([LastName] = 'Selçuk' ) ;", builder.Query);
+            Assert.AreEqual("WHERE ([LastName] = 'Selçuk'  );", builder.Query);
         }
     }
 }

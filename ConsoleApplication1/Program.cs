@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using Saka.Entity.QueryBuilder;
 
 namespace ConsoleApplication1
@@ -89,6 +89,8 @@ namespace ConsoleApplication1
             //DELETE FROM Person WHERE[BusinessEntityID] = 2;
             Console.WriteLine(query);
             builder.Clear();
+
+
             Console.ReadKey();
 
         }

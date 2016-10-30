@@ -11,11 +11,11 @@ namespace Saka.Entity.QueryBuilder.Tests
         public void WithTableName()
         {
             builder.From("Test").EndQuery();
-            Assert.AreEqual("FROM Test;",builder.Query);
+            Assert.AreEqual("FROM Test ;",builder.Query);
             builder.Clear();
 
             builder.From().EndQuery();
-            Assert.AreEqual("FROM Person;", builder.Query);
+            Assert.AreEqual("FROM Person ;", builder.Query);
 
         }
         [TestMethod]
