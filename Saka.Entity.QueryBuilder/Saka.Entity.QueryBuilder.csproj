@@ -69,6 +69,7 @@
     <Compile Include="src\interfaces\IIn.cs" />
     <Compile Include="src\interfaces\IInserted.cs" />
     <Compile Include="src\interfaces\IInto.cs" />
+    <Compile Include="src\interfaces\IIs.cs" />
     <Compile Include="src\interfaces\IJoin.cs" />
     <Compile Include="src\interfaces\ILeftJoin.cs" />
     <Compile Include="src\interfaces\ILike.cs" />
@@ -88,6 +89,7 @@
     <Compile Include="src\interfaces\IUse.cs" />
     <Compile Include="src\interfaces\IValues.cs" />
     <Compile Include="src\interfaces\IWhen.cs" />
+    <Compile Include="src\interfaces\INull.cs" />
     <Compile Include="src\views\Add.cs" />
     <Compile Include="src\views\Alter.cs" />
     <Compile Include="src\views\Asc.cs" />
@@ -130,10 +132,12 @@
     <Compile Include="src\views\Insert.cs" />
     <Compile Include="src\views\Inserted.cs" />
     <Compile Include="src\views\Into.cs" />
+    <Compile Include="src\views\Is.cs" />
     <Compile Include="src\views\Join.cs" />
     <Compile Include="src\views\LeftJoin.cs" />
     <Compile Include="src\views\Like.cs" />
     <Compile Include="src\views\Not.cs" />
+    <Compile Include="src\views\Null.cs" />
     <Compile Include="src\views\On.cs" />
     <Compile Include="src\views\Or.cs" />
     <Compile Include="src\views\And.cs" />

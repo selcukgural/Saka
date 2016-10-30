@@ -19,7 +19,7 @@
         #region SELECT
         public QueryBuilder<T> Select(params Expression<Func<T,object>>[] columns)
         {
-            if (columns == null) throw new ArgumentNullException("columns");
+            if (columns == null) throw new ArgumentNullException(nameof(columns));
             if (!columns.Any()) throw new ArgumentEmptyException("columns");
             this.Query += QueryBuilder.Select.WithExpression(columns);
             return this;
@@ -27,7 +27,7 @@
 
         public QueryBuilder<T> Select(IEnumerable<string> columns)
         {
-            if (columns == null) throw new ArgumentNullException("columns");
+            if (columns == null) throw new ArgumentNullException(nameof(columns));
             if (!columns.Any()) throw new ArgumentEmptyException("columns");
 
             this.Query+=QueryBuilder.Select.WithIEnumerable(columns);
@@ -36,7 +36,7 @@
 
         public QueryBuilder<T> Select(params string[] columns)
         {
-            if (columns == null) throw new ArgumentNullException("columns");
+            if (columns == null) throw new ArgumentNullException(nameof(columns));
             if (!columns.Any()) throw new ArgumentEmptyException("columns");
 
             this.Query += QueryBuilder.Select.WithParams(columns);
@@ -71,7 +71,7 @@
 
         public QueryBuilder<T> Where(string condition, bool parenthesis = false)
         {
-            if(string.IsNullOrEmpty(condition)) throw new ArgumentNullException("condition");
+            if(string.IsNullOrEmpty(condition)) throw new ArgumentNullException(nameof(condition));
 
             this.Query += QueryBuilder.Where.WithString(condition, parenthesis);
             return this;
@@ -93,7 +93,7 @@
 
         public QueryBuilder<T> Max(string column,bool comma = false)
         {
-            if(string.IsNullOrEmpty(column)) throw new ArgumentNullException("column");
+            if(string.IsNullOrEmpty(column)) throw new ArgumentNullException(nameof(column));
 
             Query += QueryBuilder.Max.WithString(column,comma);
             return this;
@@ -116,7 +116,7 @@
 
         public QueryBuilder<T> Min(string column, bool comma = false)
         {
-            if (string.IsNullOrEmpty(column)) throw new ArgumentNullException("column");
+            if (string.IsNullOrEmpty(column)) throw new ArgumentNullException(nameof(column));
 
             Query += QueryBuilder.Min.WithString(column, comma);
             return this;
@@ -139,7 +139,7 @@
 
         public QueryBuilder<T> Avg(string column, bool comma = false)
         {
-            if (string.IsNullOrEmpty(column)) throw new ArgumentNullException("column");
+            if (string.IsNullOrEmpty(column)) throw new ArgumentNullException(nameof(column));
 
             Query += QueryBuilder.Avg.WithString(column, comma);
             return this;
@@ -163,7 +163,7 @@
 
         public QueryBuilder<T> Count(string column,bool comma = false)
         {
-            if (string.IsNullOrEmpty(column)) throw new ArgumentNullException("column");
+            if (string.IsNullOrEmpty(column)) throw new ArgumentNullException(nameof(column));
 
             Query += QueryBuilder.Count.WithString(column,comma);
             return this;
@@ -185,7 +185,7 @@
 
         public QueryBuilder<T> Sum(string column, bool comma = false)
         {
-            if (string.IsNullOrEmpty(column)) throw new ArgumentNullException("column");
+            if (string.IsNullOrEmpty(column)) throw new ArgumentNullException(nameof(column));
 
             Query += QueryBuilder.Sum.WithString(column, comma);
             return this;
@@ -229,6 +229,22 @@
         }
         #endregion
 
+        #region Is
+        public QueryBuilder<T> Is()
+        {
+            Query += QueryBuilder.Is.JustIs();
+            return this;
+        }
+        #endregion
+
+        #region Null
+        public QueryBuilder<T> Null()
+        {
+            Query += QueryBuilder.Null.JustNull();
+            return this;
+        } 
+        #endregion
+
         #region FORMAT
         public QueryBuilder<T> Format(IEnumerable<string> format, bool comma = false)
         {
@@ -265,7 +281,7 @@
 
         public QueryBuilder<T> GroupBy(IEnumerable<string> columns)
         {
-            if (columns == null) throw new ArgumentNullException("columns");
+            if (columns == null) throw new ArgumentNullException(nameof(columns));
             if (!columns.Any()) throw new ArgumentEmptyException("columns");
 
             Query += QueryBuilder.GroupBy.WithIEnumerableString(columns);
@@ -274,7 +290,7 @@
 
         public QueryBuilder<T> GroupBy(string value)
         {
-            if (string.IsNullOrEmpty(value)) throw new ArgumentNullException("value");
+            if (string.IsNullOrEmpty(value)) throw new ArgumentNullException(nameof(value));
 
             Query += QueryBuilder.GroupBy.WihtString(value);
             return this;
@@ -297,7 +313,7 @@
 
         public QueryBuilder<T> And(string condition, bool parenthesis = false)
         {
-            if(string.IsNullOrEmpty(condition)) throw new ArgumentNullException("condition");
+            if(string.IsNullOrEmpty(condition)) throw new ArgumentNullException(nameof(condition));
             this.Query += QueryBuilder.And.WithString(condition, parenthesis);
             return this;
         }
@@ -312,7 +328,7 @@
         #region AS
         public QueryBuilder<T> As(string alias)
         {
-            if(string.IsNullOrEmpty(alias)) throw new ArgumentNullException("alias");
+            if(string.IsNullOrEmpty(alias)) throw new ArgumentNullException(nameof(alias));
             this.Query += QueryBuilder.As.WithString(alias);
             return this;
         }
@@ -342,7 +358,7 @@
 
         public QueryBuilder<T> Upper(string column,bool comma = false)
         {
-            if (string.IsNullOrEmpty(column)) throw new ArgumentNullException("column");
+            if (string.IsNullOrEmpty(column)) throw new ArgumentNullException(nameof(column));
             this.Query += QueryBuilder.Upper.WithString(column,comma);
             return this;
         }
@@ -364,7 +380,7 @@
 
         public QueryBuilder<T> Lower(string column,bool comma = false)
         {
-            if (string.IsNullOrEmpty(column)) throw new ArgumentNullException("column");
+            if (string.IsNullOrEmpty(column)) throw new ArgumentNullException(nameof(column));
             this.Query += QueryBuilder.Lower.WithString(column,comma);
             return this;
         }
@@ -386,7 +402,7 @@
 
         public QueryBuilder<T> SubString(string column, int startIndex, int length,bool comma = false)
         {
-            if (string.IsNullOrEmpty(column)) throw new ArgumentNullException("column");
+            if (string.IsNullOrEmpty(column)) throw new ArgumentNullException(nameof(column));
             this.Query += QueryBuilder.SubString.WithString(column, startIndex, length,comma);
             return this;
         }
@@ -408,7 +424,7 @@
 
         public QueryBuilder<T> Len(string column, bool comma = false)
         {
-            if (string.IsNullOrEmpty(column)) throw new ArgumentNullException("column");
+            if (string.IsNullOrEmpty(column)) throw new ArgumentNullException(nameof(column));
             this.Query += QueryBuilder.Len.WithString(column,comma);
             return this;
         }
@@ -432,7 +448,7 @@
         #region DISTINCT
         public QueryBuilder<T> Distinct(params Expression<Func<T,object>>[] columns)
         {
-            if (columns == null) throw new ArgumentNullException("columns");
+            if (columns == null) throw new ArgumentNullException(nameof(columns));
             if (!columns.Any()) throw new ArgumentEmptyException("columns");
 
             Query += QueryBuilder.Distinct.WithExpression(columns);
@@ -441,7 +457,7 @@
 
         public QueryBuilder<T> Distinct(IEnumerable<string> columns)
         {
-            if (columns == null) throw new ArgumentNullException("columns");
+            if (columns == null) throw new ArgumentNullException(nameof(columns));
             if (!columns.Any()) throw new ArgumentEmptyException("columns");
 
             Query += QueryBuilder.Distinct.WithIEnumerable(columns);
@@ -450,7 +466,7 @@
 
         public QueryBuilder<T> Distinct(params string[] columns)
         {
-            if (columns == null) throw new ArgumentNullException("columns");
+            if (columns == null) throw new ArgumentNullException(nameof(columns));
             if (!columns.Any()) throw new ArgumentEmptyException("columns");
 
             Query += QueryBuilder.Distinct.WithParams(columns);
@@ -476,7 +492,7 @@
 
         public QueryBuilder<T> From(string tableName)
         {
-            if (string.IsNullOrEmpty(tableName)) throw new ArgumentNullException("tableName");
+            if (string.IsNullOrEmpty(tableName)) throw new ArgumentNullException(nameof(tableName));
             Query += QueryBuilder.From.WithTableName(tableName);
             return this;
         }
@@ -491,7 +507,7 @@
 
         public QueryBuilder<T> Or(string condition, bool parenthesis = false)
         {
-            if (string.IsNullOrEmpty(condition)) throw new ArgumentNullException("condition");
+            if (string.IsNullOrEmpty(condition)) throw new ArgumentNullException(nameof(condition));
             this.Query += QueryBuilder.Or.WithString(condition, parenthesis);
             return this;
         }
@@ -513,7 +529,7 @@
 
         public QueryBuilder<T> OrderBy(string column, bool asc = true)
         {
-            if (string.IsNullOrEmpty(column)) throw new ArgumentNullException("column");
+            if (string.IsNullOrEmpty(column)) throw new ArgumentNullException(nameof(column));
 
             Query += QueryBuilder.OrderBy.WithString(column, asc);
             return this;
@@ -529,7 +545,7 @@
         #region TOP
         public QueryBuilder<T> Top(int top, bool percent = false, params Expression<Func<T,object>>[] columns)
         {
-            if (columns == null) throw new ArgumentNullException("columns");
+            if (columns == null) throw new ArgumentNullException(nameof(columns));
             if (!columns.Any()) throw new ArgumentEmptyException("columns");
 
             Query += QueryBuilder.Top.WithExpression(top, percent, columns);
@@ -538,7 +554,7 @@
 
         public QueryBuilder<T> Top(int top, bool percent, IEnumerable<string> columns)
         {
-            if (columns == null) throw new ArgumentNullException("columns");
+            if (columns == null) throw new ArgumentNullException(nameof(columns));
             if (!columns.Any()) throw new ArgumentEmptyException("columns");
 
             Query += QueryBuilder.Top.WihtIEnumerable(top, percent, columns);
@@ -547,7 +563,7 @@
 
         public QueryBuilder<T> Top(int top, bool percent = false, params string[] columns)
         {
-            if (columns == null) throw new ArgumentNullException("columns");
+            if (columns == null) throw new ArgumentNullException(nameof(columns));
             if (!columns.Any()) throw new ArgumentEmptyException("columns");
 
             Query += QueryBuilder.Top.WihtParams(top, percent, columns);
@@ -572,7 +588,7 @@
         #region INTO
         public QueryBuilder<T> Into(string tableName)
         {
-            if (string.IsNullOrEmpty(tableName)) throw new ArgumentNullException("tableName");
+            if (string.IsNullOrEmpty(tableName)) throw new ArgumentNullException(nameof(tableName));
             Query += QueryBuilder.Into.WithString(tableName);
             return this;
         }
@@ -587,7 +603,7 @@
         #region COLUMNS
         public QueryBuilder<T> Columns(params Expression<Func<T,object>>[] columns)
         {
-            if (columns == null) throw new ArgumentNullException("columns");
+            if (columns == null) throw new ArgumentNullException(nameof(columns));
             if (!columns.Any()) throw new ArgumentEmptyException("columns");
 
             Query += QueryBuilder.Columns.WithExpression(columns);
@@ -596,7 +612,7 @@
 
         public QueryBuilder<T> Columns(IEnumerable<string> columns)
         {
-            if (columns == null) throw new ArgumentNullException("columns");
+            if (columns == null) throw new ArgumentNullException(nameof(columns));
             if (!columns.Any()) throw new ArgumentEmptyException("columns");
 
             Query += QueryBuilder.Columns.WithIEnumerable(columns);
@@ -605,7 +621,7 @@
 
         public QueryBuilder<T> Columns(params string[] columns)
         {
-            if (columns == null) throw new ArgumentNullException("columns");
+            if (columns == null) throw new ArgumentNullException(nameof(columns));
             if (!columns.Any()) throw new ArgumentEmptyException("columns");
 
             Query += QueryBuilder.Columns.WithIEnumerable(columns);
@@ -616,7 +632,7 @@
         #region VALUES
         public QueryBuilder<T> Values(IEnumerable<object> columns)
         {
-            if (columns == null) throw new ArgumentNullException("columns");
+            if (columns == null) throw new ArgumentNullException(nameof(columns));
             if (!columns.Any()) throw new ArgumentEmptyException("columns");
 
             Query += QueryBuilder.Values.WithIEnumerable(columns);
@@ -625,7 +641,7 @@
 
         public QueryBuilder<T> Values(params object[] columns)
         {
-            if (columns == null) throw new ArgumentNullException("columns");
+            if (columns == null) throw new ArgumentNullException(nameof(columns));
             if (!columns.Any()) throw new ArgumentEmptyException("columns");
 
             Query += QueryBuilder.Values.WithParams(columns);
@@ -636,7 +652,7 @@
         #region UPDATE
         public QueryBuilder<T> Update(string tableName)
         {
-            if (string.IsNullOrEmpty(tableName)) throw new ArgumentNullException("tableName");
+            if (string.IsNullOrEmpty(tableName)) throw new ArgumentNullException(nameof(tableName));
             Query += QueryBuilder.Update.WihtString(tableName);
             return this;
         }
@@ -651,22 +667,22 @@
         #region SET
         public QueryBuilder<T> Set(params Expression<Func<T,object>>[] columnsAndValues)
         {
-            if (columnsAndValues == null || !columnsAndValues.Any()) throw new ArgumentNullException("columnsAndValues");
+            if (columnsAndValues == null || !columnsAndValues.Any()) throw new ArgumentNullException(nameof(columnsAndValues));
             Query += QueryBuilder.Set.WithExpression(columnsAndValues);
             return this;
         }
 
         public QueryBuilder<T> Set(IDictionary<string, object> columnsAndValues)
         {
-            if (columnsAndValues == null || !columnsAndValues.Keys.Any() || !columnsAndValues.Values.Any()) throw new ArgumentNullException("columnsAndValues");
+            if (columnsAndValues == null || !columnsAndValues.Keys.Any() || !columnsAndValues.Values.Any()) throw new ArgumentNullException(nameof(columnsAndValues));
             Query += QueryBuilder.Set.WihtIDictionary(columnsAndValues);
             return this;
         }
 
         public QueryBuilder<T> Set(IEnumerable<string> columns, IEnumerable<object> values)
         {
-            if (columns == null || !columns.Any()) throw new ArgumentNullException("columns");
-            if (values == null || !values.Any()) throw new ArgumentNullException("values");
+            if (columns == null || !columns.Any()) throw new ArgumentNullException(nameof(columns));
+            if (values == null || !values.Any()) throw new ArgumentNullException(nameof(values));
 
             Query += QueryBuilder.Set.WihtEnumerable(columns, values);
             return this;
@@ -674,7 +690,7 @@
 
         public QueryBuilder<T> Set(string column, object value)
         {
-            if (string.IsNullOrEmpty(column)) throw new ArgumentNullException("column");
+            if (string.IsNullOrEmpty(column)) throw new ArgumentNullException(nameof(column));
             Query += QueryBuilder.Set.WithSingle(column, value);
             return this;
         }
@@ -697,7 +713,7 @@
         #region LIKE
         public QueryBuilder<T> Like(string pattern)
         {
-            if (string.IsNullOrEmpty(pattern)) throw new ArgumentNullException("pattern");
+            if (string.IsNullOrEmpty(pattern)) throw new ArgumentNullException(nameof(pattern));
             Query += QueryBuilder.Like.WihtString(pattern);
             return this;
         }
@@ -750,7 +766,7 @@
         #region TABLE
         public QueryBuilder<T> Table(string tableName)
         {
-            if (string.IsNullOrEmpty(tableName)) throw new ArgumentNullException("tableName");
+            if (string.IsNullOrEmpty(tableName)) throw new ArgumentNullException(nameof(tableName));
             Query += QueryBuilder.Table.WithString(tableName);
             return this;
         }
@@ -765,7 +781,7 @@
         #region DATABASE
         public QueryBuilder<T> Database(string tableName)
         {
-            if (string.IsNullOrEmpty(tableName)) throw new ArgumentNullException("tableName");
+            if (string.IsNullOrEmpty(tableName)) throw new ArgumentNullException(nameof(tableName));
             Query += QueryBuilder.Database.WithString(tableName);
             return this;
         }
@@ -829,14 +845,14 @@
         #region COLUMN
         public QueryBuilder<T> Column(Expression<Func<T,object>> column)
         {
-            if (column == null) throw new ArgumentNullException("column");
+            if (column == null) throw new ArgumentNullException(nameof(column));
             Query += QueryBuilder.Column.WithExpression(column);
             return this;
         }
 
         public QueryBuilder<T> Column(string columnName)
         {
-            if (string.IsNullOrEmpty(columnName)) throw new ArgumentNullException("columnName");
+            if (string.IsNullOrEmpty(columnName)) throw new ArgumentNullException(nameof(columnName));
             Query += QueryBuilder.Column.WithString(columnName);
             return this;
         }
@@ -867,14 +883,14 @@
         #region CASE
         public QueryBuilder<T> Case(Expression<Func<T,object>> expression)
         {
-            if (expression == null) throw new ArgumentNullException("expression");
+            if (expression == null) throw new ArgumentNullException(nameof(expression));
             Query += QueryBuilder.Case.WithExpression(expression);
             return this;
         }
 
         public QueryBuilder<T> Case(string expression)
         {
-            if (string.IsNullOrEmpty(expression)) throw new ArgumentNullException("expression");
+            if (string.IsNullOrEmpty(expression)) throw new ArgumentNullException(nameof(expression));
             Query += QueryBuilder.Case.WithString(expression);
             return this;
         }
@@ -889,14 +905,14 @@
         #region WHEN
         public QueryBuilder<T> When(Expression<Func<T,object>> condition)
         {
-            if (condition == null) throw new ArgumentNullException("condition");
+            if (condition == null) throw new ArgumentNullException(nameof(condition));
             Query += QueryBuilder.When.WithExpression(condition);
             return this;
         }
 
         public QueryBuilder<T> When(string condition)
         {
-            if (string.IsNullOrEmpty(condition)) throw new ArgumentNullException("condition");
+            if (string.IsNullOrEmpty(condition)) throw new ArgumentNullException(nameof(condition));
             Query += QueryBuilder.When.WithString(condition);
             return this;
         }
@@ -911,7 +927,7 @@
         #region THEN
         public QueryBuilder<T> Then(Expression<Func<T,object>> expression)
         {
-            if (expression == null) throw new ArgumentNullException("expression");
+            if (expression == null) throw new ArgumentNullException(nameof(expression));
             Query += QueryBuilder.Then.WithExpression(expression);
             return this;
         }
@@ -932,7 +948,7 @@
         #region ELSE
         public QueryBuilder<T> Else(Expression<Func<T,object>> expression)
         {
-            if (expression == null) throw new ArgumentNullException("expression");
+            if (expression == null) throw new ArgumentNullException(nameof(expression));
             Query += QueryBuilder.Else.WithExpression(expression);
             return this;
         }
@@ -986,7 +1002,7 @@
 
         public QueryBuilder<T> Inserted(params Expression<Func<T,object>>[] columns)
         {
-            if (columns == null) throw new ArgumentNullException("columns");
+            if (columns == null) throw new ArgumentNullException(nameof(columns));
             if (!columns.Any()) throw new ArgumentEmptyException("columns");
 
             Query += QueryBuilder.Inserted.WithExpression(columns);
@@ -995,7 +1011,7 @@
 
         public QueryBuilder<T> Inserted(IEnumerable<string> columns)
         {
-            if (columns == null) throw new ArgumentNullException("columns");
+            if (columns == null) throw new ArgumentNullException(nameof(columns));
             if (!columns.Any()) throw new ArgumentEmptyException("columns");
 
             Query += QueryBuilder.Inserted.WithIEnumerable(columns);
@@ -1004,7 +1020,7 @@
 
         public QueryBuilder<T> Inserted(params string[] columns)
         {
-            if (columns == null) throw new ArgumentNullException("columns");
+            if (columns == null) throw new ArgumentNullException(nameof(columns));
             if (!columns.Any()) throw new ArgumentEmptyException("columns");
 
             Query += QueryBuilder.Inserted.WithParams(columns);
@@ -1021,7 +1037,7 @@
         #region DECLARE
         public QueryBuilder<T> Declare(string name)
         {
-            if (string.IsNullOrEmpty(name)) throw new ArgumentNullException("name");
+            if (string.IsNullOrEmpty(name)) throw new ArgumentNullException(nameof(name));
             Query += QueryBuilder.Declare.WithString(name);
             return this;
         }
@@ -1050,7 +1066,7 @@
         #region USE
         public QueryBuilder<T> Use(string databaseName)
         {
-            if (string.IsNullOrEmpty(databaseName)) throw new ArgumentNullException("databaseName");
+            if (string.IsNullOrEmpty(databaseName)) throw new ArgumentNullException(nameof(databaseName));
 
             Query += QueryBuilder.Use.WihtString(databaseName);
             return this;
@@ -1080,7 +1096,7 @@
         #region IF
         public QueryBuilder<T> If(Expression<Func<T,object>> condition)
         {
-            if (condition == null) throw new ArgumentNullException("condition");
+            if (condition == null) throw new ArgumentNullException(nameof(condition));
 
             Query += QueryBuilder.If.WihtExpression(condition);
             return this;
@@ -1088,7 +1104,7 @@
 
         public QueryBuilder<T> If(string condition)
         {
-            if (string.IsNullOrEmpty(condition)) throw new ArgumentNullException("condition");
+            if (string.IsNullOrEmpty(condition)) throw new ArgumentNullException(nameof(condition));
 
             Query += QueryBuilder.If.WithString(condition);
             return this;
@@ -1110,7 +1126,7 @@
 
         public QueryBuilder<T> Join(string tableName)
         {
-            if (string.IsNullOrEmpty(tableName)) throw new ArgumentNullException("tableName");
+            if (string.IsNullOrEmpty(tableName)) throw new ArgumentNullException(nameof(tableName));
             Query += QueryBuilder.Join.WithString(tableName);
             return this;
         }
@@ -1153,7 +1169,7 @@
 
         public QueryBuilder<T> LeftJoin(string tableName)
         {
-            if (string.IsNullOrEmpty(tableName)) throw new ArgumentNullException("tableName");
+            if (string.IsNullOrEmpty(tableName)) throw new ArgumentNullException(nameof(tableName));
             Query += QueryBuilder.LeftJoin.WithString(tableName);
             return this;
         }
@@ -1168,7 +1184,7 @@
         #region IN
         public QueryBuilder<T> In<K>(IEnumerable<K> values)
         {
-            if (values == null) throw new ArgumentNullException("values");
+            if (values == null) throw new ArgumentNullException(nameof(values));
             if (!values.Any()) throw new ArgumentEmptyException("values");
 
             Query += QueryBuilder.In.WihtEnumerable(values);

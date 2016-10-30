@@ -6,7 +6,7 @@
     {
         internal static string WithExpression<T>(Expression<Func<T,object>> condition, bool parenthesis)
         {
-            var value = ExpressionHelper.ConditionBuilder(condition, Constants.Sql.Where);
+            var value = string.Concat(ExpressionHelper.ConditionBuilder(condition, Constants.Sql.Where)," ");
             return !parenthesis ? value : string.Concat(value.Insert(Constants.Sql.Where.Length,"("), ")"," ");
         }
 

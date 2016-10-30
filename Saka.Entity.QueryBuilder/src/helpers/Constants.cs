@@ -4,6 +4,7 @@
     {
         internal static class Sql
         {
+            internal const string Is = "IS ";
             internal const string Where = "WHERE ";
             internal const string Select = "SELECT ";
             internal const string SelectWithStar = "SELECT * ";

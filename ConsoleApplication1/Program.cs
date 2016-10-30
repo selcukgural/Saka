@@ -8,6 +8,12 @@ namespace ConsoleApplication1
         static void Main(string[] args)
         {
             var builder = new QueryBuilder<Person>();
+            var query = builder.Select(e => e.BusinessEntityID, e => e.MiddleName, e => e.LastName, e => e.Title)
+                .From("Person.Person")
+                .Where(e => e.Title)
+                .Is()
+                .Not()
+                .Null();
             Console.ReadKey();
 
         }
